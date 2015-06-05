@@ -4,16 +4,14 @@
 
 // Il faudra inclure les headers nécessaires pour les types.
 
+#include "hardware_common.h"
+#include "hardware_UART.h"
+
 // Tous les inits "généraux"
 int init_GPIO();
 int init_GPIO_LED();
 int init_RTC();     // Donner un nom plus explicite (c'est bien pour les timers ?)
 int init_PWM_In();
-
-
-// Delay
-int delay_ms(int duration);
-
 
 
 // Accès aux pins
@@ -40,17 +38,8 @@ int timer_start (int lequel, int temps_ms);
 // le i-ième timer peut être géré par un e_TIMER non ?
 
 
-// UART
-int UART_init   (e_UART_Channel);   // Avec des wrappers pour Asser et XBee ?
-int UART_send_c (e_UART_Channel, char); // ou bien : (mieux non ?)
-int UART_send_s (e_UART_Channel, char*);
-// et pour la réception :
-int UART_receive(e_UART_Channel, char);
-
-
-
 // Capteurs US
-int US_Sensor_int_all();
+int US_Sensor_init_all();
 int US_Sensor_init      (US_Sensor);
 int US_Sensor_enable    (US_Sensor);
 int US_Sensor_disable   (US_Sensor);
@@ -70,7 +59,7 @@ int servo_get_pos(Servo);
 
 // Moteurs
 int moteur_init(e_Moteur);
-int moteur_start(e_Moteur, int vitesse); // Définir l'unité de vitesse. Le signe définit le sens.
+int moteur_set_PWM(e_Moteur, int vitesse); // Définir l'unité de vitesse. Le signe définit le sens.
 int moteur_stop(e_Moteur);
 
 

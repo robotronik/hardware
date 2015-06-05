@@ -1,7 +1,5 @@
 #include <p33FJ128MC802.h>
 
-#include "time.h"
-
 void pause_ms(unsigned short n)
 {
     unsigned short i,j;
