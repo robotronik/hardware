@@ -18,7 +18,7 @@ int init_UART() {
     txBufferFin     = 0;
 
     AD1PCFGLbits.PCFG5  = 1;    // Désactivation de l'entrée analogique !!!
-    RPOR1bits.RP2R      = 3;    // Tx1 -> RP2
+    RPOR1bits.RP2R      = 3;    //        Tx1 -> RP2
     RPINR18bits.U1RXR   = 3;    // RP3 -> Rx1
 
     //U1MODEbits.LPBACK = 1;// Debug : Tx1 -> Rx1
@@ -30,10 +30,10 @@ int init_UART() {
     U1STAbits.UTXISEL1 = 1; // Interrupt on empty FIFO, last byte is being sent
     U1STAbits.UTXISEL0 = 0; //                      "
 
-    IFS0bits.U1RXIF = 0;    // On evite des interruptions à l'activation
+    IFS0bits.U1RXIF = 0;    // On évite des interruptions à l'activation
     IEC0bits.U1RXIE = 1;    // Activation de l'interruption sur réceptions
     IFS0bits.U1TXIF = 0;
-    IEC0bits.U1TXIE = 1;    // Activation de l'interruption sur l'envoie
+    IEC0bits.U1TXIE = 1;    // Activation de l'interruption sur l'envoi
     // IFS4bits.U1EIF = 0;
     // IEC4bits.U1EIE = 1;     // Activation de l'interruption sur erreurs
 
