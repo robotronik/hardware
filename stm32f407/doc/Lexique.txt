@@ -1,0 +1,54 @@
+Acronyms and definitions
+ADC			Analog-to-digital converter
+ANSI		American National Standards Institute
+API			Application Programming Interface
+BSP			Board Support Package
+CAN			Controller area network
+CMSIS		Cortex Microcontroller Software Interface Standard
+CPU			Central Processing Unit
+CRYP		Cryptographic processor unit
+CRC			CRC calculation unit
+DAC			Digital to analog converter
+DCMI		Digital Camera Module Interface
+DMA			Direct Memory Access
+DMA2D		Chrom-Art AcceleratorTM controller
+ETH			Ethernet controller
+EXTI		External interrupt/event controller
+FLASH		Flash memory
+FSMC		Flexible Static Memory controller
+FMC			Flexible Memory controller
+GPIO		General purpose I/Os
+HAL			Hardware abstraction layer
+HASH		Hash processor
+HCD			USB Host Controller Driver
+I2C			Inter-integrated circuit
+I2S			Inter-integrated sound
+IRDA		InfraRed Data Association
+IWDG		Independent watchdog
+LTDC		LCD TFT Display Controller
+MCU			MicroController Unit
+MSP			MCU Specific Package
+MSP			MCU Support package
+NAND		NAND external Flash memory
+NOR			NOR external Flash memory
+NVIC		Nested Vectored Interrupt Controller
+PCCARD		PCCARD external memory
+PCD			USB Peripheral Controller Driver
+PWM			Pulse Width Modulation
+PWR			Power controller
+RCC			Reset and clock controller
+RNG			Random Number Generator
+RTC			Real-time clock
+SAI			Serial Audio Interface
+SD			Secure Digital
+SDRAM		SDRAM external memory
+SRAM		SRAM external memory
+SMARTCARD	Smartcard IC
+SPI			Serial Peripheral interface
+SysTick		System tick timer
+TIM			Advanced-control, general-purpose or basic timer
+UART		Universal asynchronous receiver/transmitter
+USART		Universal synchronous receiver/transmitter
+WWDG		Window watchdog
+USB			Universal Serial Bus
+PPP			STM32 peripheral or block

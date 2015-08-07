@@ -1,0 +1,23 @@
+Advanced Timers :
+TIM1
+TIM8
+
+Basic Timers :
+TIM6
+TIM7 : end_of_match
+
+General Purpose Timers
+TIM2
+TIM3
+TIM4
+TIM5 : sensor1
+
+General Purpose Timers
+TIM9 : NOT FUNCTIONNAL -> DON'T KNOW WHY
+TIM10
+TIM11
+TIM12 : sensor 2
+TIM13
+TIM14
+
+

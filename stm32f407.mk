@@ -1,10 +1,10 @@
 ################################################################################
 # Makefile générique, appelé par la lib et les projets parallèles
 # Default Options
-export ARCH  = STM32F407
-export ROBOT
-export SDL
-export DEBUG
+#export ARCH  = STM32F407
+#export ROBOT
+#export SDL
+#export DEBUG
 
 ################################################################################
 # Compilateur C et linker
@@ -23,7 +23,7 @@ TARGET  = -mcpu=cortex-m4 -DSTM32F407xx
 CFLAGS += -DPIC_BUILD=0 -mthumb -mfloat-abi=soft -mlittle-endian -fno-builtin-printf \
 -fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
 #-mthumb-interwork
-LDFLAGS+= -W -Wall -std=c99 -lc -T$(LINKER) -Wl,--gc-sections
+LDFLAGS+= -W -Wall -std=c99 -lc -T$(LINKER) -Wl,--gc-sections -lc -lrdimon
 
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
@@ -44,3 +44,19 @@ endif
 STM32Cube   = $(abspath $(STM32_DIR)/lib/STM32Cube)/
 # Emplacement du fichier de config de OpenOCD
 OPENOCD_CFG = $(abspath $(STM32_DIR)/lib/openocd/stm32f4discovery.cfg)
+
+
+################################################################################
+# Arch-dependant targets
+
+##### Envoi du binaire sur le STM32
+flash: $(HEX)
+	@echo ""
+	@echo "Flashing the STM32 Discovery Board !"
+	@echo ""
+	@sudo openocd -f $(OPENOCD_CFG) \
+		-c "init" \
+		-c "reset init" \
+		-c "flash write_image erase $(HEX)" \
+		-c "reset" \
+		-c "shutdown"
