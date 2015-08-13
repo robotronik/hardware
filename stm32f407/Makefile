@@ -1,5 +1,5 @@
 PROJECT=stm32f407
-default: all
+default: lib
 # Default Options
 export ARCH   = stm32f407
 export ROBOT ?= gros
@@ -30,9 +30,10 @@ LDFLAGS+= -lHAL_Driver -lCMSIS -lBSP
 ################################################################################
 # Cibles du projet
 
-all: lib$(ARCH).a
+hardware-lib: $(BUILD_DIR)/lib$(ARCH).a
 
-lib$(ARCH).a: $(OBJ) $(OBJ_S)
+$(BUILD_DIR)/lib$(ARCH).a: $(OBJ) $(OBJ_S) $(LIB_DIR)libBSP.a $(LIB_DIR)libCMSIS.a $(LIB_DIR)libHAL_Driver.a
+
 
 
 ##### Compilation des sources
@@ -63,10 +64,6 @@ lib/%.a:
 #	@$(OBJ2HEX) -Oihex $^ $@
 
 
-$(BUILD_DIR):
-	@mkdir $(BUILD_DIR) $ -p
-
-
 
 ##### Débug
 debug:
@@ -85,12 +82,3 @@ debug2:
 		--eval-command="c"
 
 
-################################################################################
-# Cibles génériques
-
-mrproper: clean
-	@echo "Hard-cleaning $(PROJECT) directory…"
-	@$(MAKE) ARCH=$(ARCH) ROBOT=$(ROBOT) SDL=$(SDL) DEBUG=$(DEBUG) clean -C $(COMMUNICATION_DIR)
-	@$(MAKE) ARCH=$(ARCH) ROBOT=$(ROBOT) SDL=$(SDL) DEBUG=$(DEBUG) clean -C $(COMMON_DIR)
-	@$(MAKE) ARCH=$(ARCH) ROBOT=$(ROBOT) SDL=$(SDL) DEBUG=$(DEBUG) clean -C $(CARTO_DIR)
-	@$(MAKE) ARCH=$(ARCH) ROBOT=$(ROBOT) SDL=$(SDL) DEBUG=$(DEBUG) clean -C $(STRAT_DIR)/Robot2A

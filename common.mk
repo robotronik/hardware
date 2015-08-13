@@ -11,31 +11,28 @@ LDFLAGS+= -W -Wall -std=c99
 
 # Les différents projets
 export ASSER_DIR = $(PARENT_DIR)/asservissement/
-export STRAT_DIR = $(PARENT_DIR)/strategie/
 export CARTO_DIR = $(PARENT_DIR)/cartographie/
-
-export HARDW_DIR = $(PARENT_DIR)/hardware/
-
 export COMMON_DIR= $(PARENT_DIR)/common_code/
 export COMMUNICATION_DIR= $(COMMON_DIR)/communication/
-export STM32_DIR = $(HARDW_DIR)/stm32f407/
+export HARDW_DIR = $(PARENT_DIR)/hardware/
+
+export STRAT_DIR = $(PARENT_DIR)/strategie/Robot_$(ROBOT)
 
 # Le dossier de build, dans chaque dépôt
 export BUILD_DIR = build/$(ARCH)/$(DEBUG)
 
 ################################################################################
 # Architecture dependent parameters
+export HARDW_LIB_DIR = $(HARDW_DIR)/$(ARCH)/
+export HARDW_LIB = $(HARDW_LIB_DIR)/$(BUILD_DIR)/lib$(ARCH).a
 
-export HARDW_LIB = $(HARDW_DIR)/$(ARCH)/lib$(ARCH).a
-
-include $(HARDW_DIR)/$(ARCH).mk
-
+include $(HARDW_DIR)/$(ARCH)/$(ARCH).mk
 
 ################################################################################
 # Common Rules
 
-hardware_lib: $(HARDW_LIB)
-	cd $(ARCH) && make -C lib$(ARCH).a
+hardware_lib:
+	make -C $(HARDW_LIB_DIR) $(BUILD_DIR)/lib$(ARCH).a
 
 
 # Compile an object file
@@ -51,15 +48,22 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	@echo "	RANLIB	$(PROJECT)|$(notdir $@)"
 	@$(RANLIB) $@
 
+$(BUILD_DIR):
+	@mkdir $(BUILD_DIR) $ -p
+
 ################################################################################
 # Clean the current working directory
-.PHONY: clean mrproper
+.PHONY: clean mrproper clean-all
 
 clean:
-	@echo "Cleaning $(PROJECT) directory…"
+	@echo "	Cleaning $(PROJECT) directory…"
 	@rm -rf build/
-# clean:
-# 	@echo "Cleaning $(PROJECT) directory…"
-# 	@find $(BUILD_DIR) -name '*.o' -delete
-# 	@find $(BUILD_DIR) -name '*.a' -delete
-# 	@rmdir -p --ignore-fail-on-non-empty $(BUILD_DIR)/*/* 2>/dev/null || true
+
+clean-all:
+	@make clean -C $(ASSER_DIR)
+	@make clean -C $(CARTO_DIR)
+	@make clean -C $(COMMON_DIR)
+	@make clean -C $(COMMUNICATION_DIR)
+	@make clean -C $(HARDW_LIB_DIR)
+	@make clean -C $(STRAT_DIR)
+

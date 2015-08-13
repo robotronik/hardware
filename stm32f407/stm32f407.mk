@@ -5,7 +5,7 @@
 #export ROBOT
 #export SDL
 #export DEBUG
-
+STM32_DIR = $(HARDW_LIB_DIR)
 ################################################################################
 # Compilateur C et linker
 CC      = arm-none-eabi-gcc
