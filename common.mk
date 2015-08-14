@@ -15,6 +15,12 @@ export STRAT_DIR = $(PARENT_DIR)/strategie/Robot_$(ROBOT)
 # Le dossier de build, dans chaque dépôt
 export BUILD_DIR = build/$(ARCH)/$(DEBUG)
 
+ifeq ($(ROBOT),petit)
+	CFLAGS  += -DGROS=0 -DPETIT=1
+else
+	CFLAGS  += -DGROS=1 -DPETIT=0
+endif
+
 ################################################################################
 # Architecture dependent parameters
 export HARDW_LIB_DIR = $(HARDW_DIR)/$(ARCH)/

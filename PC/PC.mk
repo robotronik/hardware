@@ -1,11 +1,5 @@
 ################################################################################
 # Makefile générique, appelé par la lib et les projets parallèles
-# Default Options
-export ARCH  = PC
-export ROBOT
-export SDL
-export DEBUG
-
 ################################################################################
 # Compilateur C et linker
 CC      = gcc
@@ -13,8 +7,8 @@ AR      = ar
 RANLIB  = ranlib
 GDB     = gdb
 LD      = ld
-OBJ2HEX = 
-LINKER  = 
+OBJ2HEX =
+LINKER  =
 
 # Précise la carte cible
 TARGET  =

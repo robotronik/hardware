@@ -257,7 +257,7 @@ void init_pwm(s_PWM *servoX, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) {
     uint32_t PrescalerValue = 0;
     uint32_t Timer_Frequency = 1000000;
 
-    // Compute the prescaler value 
+    // Compute the prescaler value
     PrescalerValue = (uint32_t) ((SystemCoreClock) / Timer_Frequency) - 1;
     TIM_Base_InitStructure.Prescaler = PrescalerValue;
     TIM_Base_InitStructure.Period = 20000 - 1;
