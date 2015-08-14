@@ -70,17 +70,17 @@ void demarre_alarme_90secondes()
 
     //date
     RTC_DateTypeDef Date_Structure;
-    Date_Structure.WeekDay   =   RTC_WEEKDAY_MONDAY ; 
-    Date_Structure.Month   =   RTC_MONTH_JANUARY ; 
-    Date_Structure.Date   =   1 ; 
-    Date_Structure.Year   =   0 ;     
+    Date_Structure.WeekDay   =   RTC_WEEKDAY_MONDAY ;
+    Date_Structure.Month   =   RTC_MONTH_JANUARY ;
+    Date_Structure.Date   =   1 ;
+    Date_Structure.Year   =   0 ;
     HAL_RTC_SetDate(&Alarme_90secondes,&Date_Structure,RTC_FORMAT_BIN);
 
     //alarm
     RTC_AlarmTypeDef Alarm_Structure;
     Alarm_Structure.AlarmTime=Time_Structure;
     Alarm_Structure.AlarmTime.Minutes=Time_Structure.Minutes;
-    Alarm_Structure.AlarmTime.Seconds=Time_Structure.Seconds+3; //89 secondes au lieu de 90 (on sait jamais) 
+    Alarm_Structure.AlarmTime.Seconds=Time_Structure.Seconds+3; //89 secondes au lieu de 90 (on sait jamais)
     Alarm_Structure.AlarmMask=RTC_ALARMMASK_NONE;
     Alarm_Structure.AlarmSubSecondMask=RTC_ALARMSUBSECONDMASK_ALL;
     Alarm_Structure.AlarmDateWeekDaySel=RTC_ALARMDATEWEEKDAYSEL_DATE;

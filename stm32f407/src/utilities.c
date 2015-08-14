@@ -49,5 +49,6 @@ void ADC_error() {
 
 void HAL_ADC_LevelOutOfWindowCallback(ADC_HandleTypeDef* hadc)
 {
+    (void)(hadc);
     HAL_GPIO_WritePin(GPIOD, LED_ORANGE, GPIO_PIN_SET);
 }
