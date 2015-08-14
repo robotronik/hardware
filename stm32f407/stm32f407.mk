@@ -23,7 +23,8 @@ LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
-CFLAGS +=
+CFLAGS +=   $(shell find $(STM32Cube)/Drivers/ -path "*" -printf "-I%h/\n" | sort -u)  \
+            $(shell find $(HARDW_LIB_DIR)/headers/ -path "*" -printf "-I%h/\n" | sort -u)  \
 
 ################################################################################
 #               Constantes de compilation
