@@ -23,13 +23,13 @@ TARGET  = -mcpu=cortex-m4 -DSTM32F407xx
 CFLAGS += -DPIC_BUILD=0 -mthumb -mfloat-abi=soft -mlittle-endian -fno-builtin-printf \
 -fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
 #-mthumb-interwork
-LDFLAGS+= -W -Wall -std=c99 -lc -T$(LINKER) -Wl,--gc-sections -lc -lrdimon
+LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon -lHAL_Driver -lCMSIS -lBSP -L$(STM32_DIR)/lib/
 
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
 CFLAGS +=   $(shell find $(STM32Cube)/Drivers/ -path "*" -printf "-I%h/\n" | sort -u)  \
-            $(shell find $(STM32_DIR)/headers/ -path "*" -printf "-I%h/\n" | sort -u)
+            $(shell find $(STM32_DIR)/headers/ -path "*" -printf "-I%h/\n" | sort -u)  \
 
 ifeq ($(ROBOT),petit)
 	CFLAGS  += -DGROS=0 -DPETIT=1

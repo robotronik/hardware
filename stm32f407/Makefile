@@ -25,14 +25,14 @@ OBJ     = $(addprefix $(BUILD_DIR)/, $(SRC:src/%.c=%.o) )
 OBJ_S   = $(SRC_S:.s=.o)
 
 #Librairies
-LDFLAGS+= -lHAL_Driver -lCMSIS -lBSP
+LDFLAGS+=
 
 ################################################################################
 # Cibles du projet
 
 hardware-lib: $(BUILD_DIR)/lib$(ARCH).a
 
-$(BUILD_DIR)/lib$(ARCH).a: $(OBJ) $(OBJ_S) $(LIB_DIR)libBSP.a $(LIB_DIR)libCMSIS.a $(LIB_DIR)libHAL_Driver.a
+$(BUILD_DIR)/lib$(ARCH).a: $(OBJ) $(OBJ_S)
 
 
 
@@ -55,6 +55,8 @@ lib/%.a:
 
 
 
+$(BUILD_DIR):
+	@mkdir $(BUILD_DIR) $ -p
 
 
 #all: $(HEX)
