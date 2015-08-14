@@ -32,13 +32,16 @@ include $(HARDW_DIR)/$(ARCH)/$(ARCH).mk
 CFLAGS += -W -Wall -std=c99 $(TARGET) $(INCLUDE) -DDEBUG=$(DEBUG)
 
 # Options pour l'édition de liens
-LDFLAGS+= -L$(HARDW_LIB_DIR)/$(BUILD_DIR)/
+LDFLAGS+= 	-L$(HARDW_LIB_DIR)/$(BUILD_DIR)/	\
+			-L$(CARTO_DIR)/$(BUILD_DIR)/		\
+			-L$(COMMUNICATION_DIR)/$(BUILD_DIR)/\
+
 
 
 ################################################################################
 # Common Rules
 
-hardware_lib:
+hardware_lib: ;
 	make -C $(HARDW_LIB_DIR) $(BUILD_DIR)/lib$(ARCH).a
 
 
