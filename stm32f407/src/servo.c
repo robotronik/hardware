@@ -3,9 +3,8 @@
 
 /*Entrer un angle entre 0° et SERVO_RANGE°*/
 void set_position_servo(uint32_t angle, Servo_t *servoX) {
-   if (angle < 0 || angle > SERVO_RANGE) {
-        out_of_range();       
-   } 
+   if (angle > SERVO_RANGE)
+        out_of_range();
 
     servoX->TIM_OC_InitStructure.Pulse = ANGLE_MIN + (angle * (ANGLE_MAX - ANGLE_MIN) / SERVO_RANGE);
     HAL_TIM_PWM_ConfigChannel(&(servoX->TIM_HandleStructure), &(servoX->TIM_OC_InitStructure), servoX->Channel);
@@ -251,7 +250,7 @@ void init_servo(Servo_t *servoX, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) {
     uint32_t PrescalerValue = 0;
     uint32_t Timer_Frequency = 1000000;
 
-    // Compute the prescaler value 
+    // Compute the prescaler value
     PrescalerValue = (uint32_t) ((SystemCoreClock) / Timer_Frequency) - 1;
     TIM_Base_InitStructure.Prescaler = PrescalerValue;
     TIM_Base_InitStructure.Period = 20000 - 1;
