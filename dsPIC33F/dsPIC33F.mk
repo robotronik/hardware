@@ -8,13 +8,13 @@ export DEBUG
 
 ################################################################################
 # Compilateur C et linker
-CC      = /opt/xc16-toolchain-bin/bin/xc16-gcc
-AR      = /opt/xc16-toolchain-bin/bin/xc16-ar
-RANLIB  = /opt/xc16-toolchain-bin/bin/xc16-ranlib
-GDB     = 
-LD      = /opt/xc16-toolchain-bin/bin/xc16-ld
-OBJ2HEX = /opt/xc16-toolchain-bin/bin/xc16-bin2hex
-LINKER  = 
+CC      = /opt/microchip/xc16/v1.24/bin/xc16-gcc
+AR      = /opt/microchip/xc16/v1.24/bin/xc16-ar
+RANLIB  = /opt/microchip/xc16/v1.24/bin/xc16-ranlib
+GDB     =
+LD      = /opt/microchip/xc16/v1.24/bin/xc16-ld
+OBJ2HEX = /opt/microchip/xc16/v1.24/bin/xc16-bin2hex
+LINKER  =
 
 # Précise la carte cible
 TARGET  = -mcpu=33FJ128MC802

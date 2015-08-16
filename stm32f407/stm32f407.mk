@@ -25,6 +25,7 @@ LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
 # avec la directive de préprocesseur "#include <header.h>"
 CFLAGS +=   $(shell find $(STM32Cube)/Drivers/ -path "*" -printf "-I%h/\n" | sort -u)  \
             $(shell find $(HARDW_LIB_DIR)/headers/ -path "*" -printf "-I%h/\n" | sort -u)  \
+            -Os
 
 ################################################################################
 #               Constantes de compilation

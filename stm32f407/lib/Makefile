@@ -1,13 +1,13 @@
 PROJECT=LibStm32f407
 default: all
 # Default Options
-export ARCH  = STM32F407
+export ARCH  = stm32f407
 export ROBOT = gros
 export SDL   = no
 export DEBUG = _WARNING_
 
 export PARENT_DIR = ../../../
-include $(PARENT_DIR)/common_code/common.mk
+include $(PARENT_DIR)/hardware/common.mk
 
 ################################################################################
 # Chemin du dépôt stm32f407
