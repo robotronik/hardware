@@ -26,6 +26,7 @@ OBJ_S   = $(SRC_S:.s=.o)
 
 #Librairies
 LDFLAGS+=
+CFLAGS += -Iheaders/
 
 ################################################################################
 # Cibles du projet
