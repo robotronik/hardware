@@ -6,7 +6,6 @@
 void start_timing(uint32_t duration);
 int ended_timing();
 
-void Delay(volatile uint32_t nCount);//Delays nCount ms
 void init();
 
 #endif

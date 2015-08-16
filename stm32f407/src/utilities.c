@@ -21,7 +21,7 @@ int ended_timing() {
 /*
  * Delay a number of systick cycles (1ms)
  */
-void Delay(volatile uint32_t nCount) {
+void delay_ms(volatile uint32_t nCount) {
     time_var1 = nCount;
 
     while(time_var1){};
@@ -42,7 +42,7 @@ void ADC_IRQHandler(void)//cf. startup_stm32f407xx.s
 
 void ADC_error() {
     while(1) {
-        Delay(50);
+        delay_ms(50);
         HAL_GPIO_TogglePin(GPIOD, LED_ROUGE);
     }
 }

@@ -3,13 +3,13 @@
 void test_led() {
 
     HAL_GPIO_TogglePin(GPIOD, LED_ROUGE);
-    Delay(100);
+    delay_ms(100);
     HAL_GPIO_TogglePin(GPIOD, LED_BLEUE);
-    Delay(100);
+    delay_ms(100);
     HAL_GPIO_TogglePin(GPIOD, LED_VERTE);
-    Delay(100);
+    delay_ms(100);
     HAL_GPIO_TogglePin(GPIOD, LED_ORANGE);
-    Delay(100);
+    delay_ms(100);
     reset_all_led();
 
 }
