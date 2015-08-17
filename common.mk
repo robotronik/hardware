@@ -59,6 +59,10 @@ $(BUILD_DIR)/%.a:
 	@echo "	RANLIB	$(PROJECT)|$(notdir $@)"
 	@$(RANLIB) $@
 
+%.hex:
+	@echo "	HEX	$(PROJECT)|$@"
+	@$(OBJ2HEX) -Oihex $^ $@
+
 ################################################################################
 # Clean the current working directory
 .PHONY: clean mrproper clean-all
@@ -75,3 +79,10 @@ clean-all:
 	@make clean -C $(HARDW_LIB_DIR)
 	@make clean -C $(STRAT_DIR)
 
+mrproper-all:
+	@make mrproper -C $(ASSER_DIR)
+	@make mrproper -C $(CARTO_DIR)
+	@make mrproper -C $(COMMON_DIR)
+	@make mrproper -C $(COMMUNICATION_DIR)
+	@make mrproper -C $(HARDW_LIB_DIR)
+	@make mrproper -C $(STRAT_DIR)

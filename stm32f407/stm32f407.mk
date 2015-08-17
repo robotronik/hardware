@@ -46,6 +46,6 @@ flash: $(HEX)
 	@sudo openocd -f $(OPENOCD_CFG) \
 		-c "init" \
 		-c "reset init" \
-		-c "flash write_image erase $(HEX)" \
+		-c "flash write_image erase $^" \
 		-c "reset" \
 		-c "shutdown"
