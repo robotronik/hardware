@@ -15,10 +15,10 @@ include $(PARENT_DIR)/hardware/common.mk
 
 ################################################################################
 # Fichiers source
-LIB_DIR = lib/
-SRC_DIR = src/
-HDR_DIR = headers/
-SRC     = UART.c
+
+
+
+SRC     = UART.c affichage.c
 HDR     = $(shell find . -name "*.h")
 OBJ     = $(addprefix $(BUILD_DIR)/, $(SRC:%.c=%.o) )
 
