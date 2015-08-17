@@ -35,6 +35,7 @@ CFLAGS += -W -Wall -std=c99 $(TARGET) $(INCLUDE) -DDEBUG=$(DEBUG)\
 # Options pour l'édition de liens
 LDFLAGS+= 	-L$(HARDW_LIB_DIR)/$(BUILD_DIR)/	\
 			-L$(CARTO_DIR)/$(BUILD_DIR)/		\
+			-L$(COMMON_DIR)/$(BUILD_DIR)/\
 			-L$(COMMUNICATION_DIR)/$(BUILD_DIR)/\
 
 
