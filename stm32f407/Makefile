@@ -6,7 +6,7 @@ export ROBOT ?= gros
 export SDL   ?= no
 export DEBUG ?= _ALWAYS_
 
-export PARENT_DIR = ../../
+PARENT_DIR = ../../
 include $(PARENT_DIR)/hardware/common.mk
 
 ################################################################################
