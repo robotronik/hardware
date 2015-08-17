@@ -6,11 +6,8 @@ int read_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin) {
             return 0;
         case GPIO_PIN_SET :
             return 1;
-        default:
-            mapping_error();
-            break;
     }
-    return -1;
+    mapping_error();
 }
 
 void write_pin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, int state) {

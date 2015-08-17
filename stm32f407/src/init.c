@@ -7,3 +7,8 @@ void init() {
         while (1){};
     }
 }
+
+void init_hardware() {
+    init();
+    init_GPIO_LED();
+}
