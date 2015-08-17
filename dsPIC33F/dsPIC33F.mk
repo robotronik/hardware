@@ -1,7 +1,7 @@
 ################################################################################
 # Makefile générique, appelé par la lib et les projets parallèles
 # Default Options
-export ARCH  = dsPIC
+export ARCH  = dsPIC33F
 export ROBOT
 export SDL
 export DEBUG
@@ -36,3 +36,6 @@ ifeq ($(ROBOT),petit)
 else
 	CFLAGS  += -DGROS=1 -DPETIT=0
 endif
+
+flash:$(PIC_HEX)
+	pk2cmd -P -M -F$(PIC_HEX) -J -T
