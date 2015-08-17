@@ -44,7 +44,10 @@ LDFLAGS+= 	-L$(HARDW_LIB_DIR)/$(BUILD_DIR)/	\
 # Common Rules
 
 hardware_lib: ;
-	make -C $(HARDW_LIB_DIR) $(BUILD_DIR)/lib$(ARCH).a
+	@$(MAKE) -C $(HARDW_LIB_DIR) $(BUILD_DIR)/lib$(ARCH).a
+
+common_lib:
+	@$(MAKE) -C $(COMMON_DIR) libCommon
 
 
 # Compile an object file
