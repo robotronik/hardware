@@ -49,3 +49,20 @@ flash: $(HEX)
 		-c "flash write_image erase $^" \
 		-c "reset" \
 		-c "shutdown"
+
+##### Débug
+debug:
+	debug1
+	debug2
+
+debug1:
+	xterm -e "openocd -f ./lib/openocd/stm32f4discovery.cfg" &
+
+debug2:
+	$(GDB) $(ELF) \
+		--eval-command="target remote localhost:3333" \
+		--eval-command="monitor reset halt" \
+		--eval-command="load" \
+		--eval-command="b main" \
+		--eval-command="c"
+
