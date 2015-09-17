@@ -8,7 +8,7 @@ export DEBUG
 
 ################################################################################
 # Compilateur C et linker
-CC      = /opt/microchip/xc16/v1.24/bin/xc16-gcc
+CC      = /opt/microchip/xc16/v1.24/bin/xc16-gcc -std=c99
 AR      = /opt/microchip/xc16/v1.24/bin/xc16-ar
 RANLIB  = /opt/microchip/xc16/v1.24/bin/xc16-ranlib
 GDB     =

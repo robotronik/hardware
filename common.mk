@@ -8,6 +8,7 @@ export ASSER_DIR = $(PARENT_DIR)/asservissement/
 export CARTO_DIR = $(PARENT_DIR)/cartographie/
 export COMMUNICATION_DIR= $(PARENT_DIR)/common_code/communication/
 export HARDW_DIR = $(PARENT_DIR)/hardware/
+export SIMU_DIR  = $(PARENT_DIR)/simulation/
 
 export STRAT_DIR = $(PARENT_DIR)/strategie/Robot_$(ROBOT)
 
@@ -29,7 +30,7 @@ include $(HARDW_DIR)/$(ARCH)/$(ARCH).mk
 
 # Options de compilations
 CFLAGS += -W -Wall -std=c99 $(TARGET) $(INCLUDE) -DDEBUG=$(DEBUG)\
-		-I$(HARDW_DIR)
+		-I$(HARDW_LIB_DIR)
 
 # Options pour l'édition de liens
 LDFLAGS+= 	-L$(HARDW_LIB_DIR)/$(BUILD_DIR)/	\
@@ -79,6 +80,7 @@ clean-all:
 	@make clean -C $(COMMUNICATION_DIR)
 	@make clean -C $(HARDW_LIB_DIR)
 	@make clean -C $(STRAT_DIR)
+	@make clean -C $(SIMU_DIR)
 
 mrproper-all:
 	@make mrproper -C $(ASSER_DIR)
@@ -86,3 +88,4 @@ mrproper-all:
 	@make mrproper -C $(COMMUNICATION_DIR)
 	@make mrproper -C $(HARDW_LIB_DIR)
 	@make mrproper -C $(STRAT_DIR)
+	@make mrproper -C $(SIMU_DIR)

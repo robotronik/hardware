@@ -2,7 +2,7 @@
 # Makefile générique, appelé par la lib et les projets parallèles
 ################################################################################
 # Compilateur C et linker
-CC      = arm-none-eabi-gcc
+CC      = arm-none-eabi-gcc -std=c99
 AR      = arm-none-eabi-ar
 RANLIB  = arm-none-eabi-ranlib
 GDB     = arm-none-eabi-gdb
