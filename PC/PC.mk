@@ -2,7 +2,8 @@
 # Makefile générique, appelé par la lib et les projets parallèles
 ################################################################################
 # Compilateur C et linker
-CC      = gcc
+CC      = gcc -std=c99
+++		= g++ -std=c++11
 AR      = ar
 RANLIB  = ranlib
 GDB     = gdb
@@ -26,6 +27,6 @@ LDFLAGS+= -Wl,--gc-sections -lm -lpthread
 
 
 ifeq ($(SDL),yes)
-	CFLAGS  += -DUSE_SDL=1
-	LDFLAGS += -lSDL -lSDL_image -lGL -lGLU -lSOIL
+	CFLAGS  += -DUSE_SDL=1 -Wno-deprecated
+	LDFLAGS +=
 endif
