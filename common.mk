@@ -29,7 +29,7 @@ export HARDW_LIB = $(HARDW_LIB_DIR)/$(BUILD_DIR)/lib$(ARCH).a
 include $(HARDW_DIR)/$(ARCH)/$(ARCH).mk
 
 # Options de compilations
-CFLAGS += -W -Wall -std=c99 $(TARGET) $(INCLUDE) -DDEBUG=$(DEBUG)\
+CFLAGS += -W -Wall $(TARGET) $(INCLUDE) -DDEBUG=$(DEBUG)\
 		-I$(HARDW_LIB_DIR)
 
 # Options pour l'édition de liens
