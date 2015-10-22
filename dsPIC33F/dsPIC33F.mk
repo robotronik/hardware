@@ -38,4 +38,7 @@ else
 endif
 
 flash:$(PIC_HEX)
-	pk2cmd -P -M -F$(PIC_HEX) -J -T
+	pk2cmd -P -I -K -M -F$(PIC_HEX) -R -J
+
+flash-and-power:$(PIC_HEX)
+	pk2cmd -P -I -K -M -F$(PIC_HEX) -R -J -T
