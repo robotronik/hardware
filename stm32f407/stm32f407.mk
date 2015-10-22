@@ -11,12 +11,15 @@ OBJ2HEX = arm-none-eabi-objcopy
 LINKER  = $(STM32Cube)/Projects/STM32F4-Discovery/Templates/TrueSTUDIO/STM32F4-Discovery/STM32F407VG_FLASH.ld
 
 # Précise la carte cible
-TARGET  = -mcpu=cortex-m4 -DSTM32F407xx
+TARGET  = 
 
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -DPIC_BUILD=0 -mthumb -mfloat-abi=soft -mlittle-endian -fno-builtin-printf \
--fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
-#-mthumb-interwork
+CFLAGS += -DPIC_BUILD=0 \
+	-mthumb -mcpu=cortex-m4 -DSTM32F407xx	\
+	-mfloat-abi=hard -mfpu=fpv4-sp-d16		\
+	-fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
+
+
 LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
 		  -lHAL_Driver -lCMSIS -lBSP -L$(HARDW_DIR)/lib/
 
@@ -24,7 +27,7 @@ LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
 CFLAGS +=   $(shell find $(STM32Cube)/Drivers/ -path "*" -printf "-I%h/\n" | sort -u)  \
-            -Os
+            -O3
 
 ################################################################################
 #               Constantes de compilation
