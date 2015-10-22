@@ -60,9 +60,9 @@ libBSP.a:        $(OBJ_BSP)
 ################################################################################
 # Cibles génériques
 
-.PHONY: clean mrproper
+.PHONY: clean
 
-mrproper:
+clean:
 	@echo "Cleaning $(PROJECT) directory…"
 	@find $(BUILDIR) -name '*.o' -delete
 	@rm -f libHAL_Driver.a libBSP.a libCMSIS.a

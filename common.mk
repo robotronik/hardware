@@ -75,7 +75,7 @@ $(BUILD_DIR)/%.a:
 
 ################################################################################
 # Clean the current working directory
-.PHONY: clean mrproper clean-all
+.PHONY: clean clean-all
 
 clean:
 	@echo "	Cleaning $(PROJECT) directory…"
@@ -88,11 +88,3 @@ clean-all:
 	@make clean -C $(HARDW_DIR)
 	@make clean -C $(STRAT_DIR)
 	@make clean -C $(SIMU_DIR)
-
-mrproper-all:
-	@make mrproper -C $(ASSER_DIR)
-	@make mrproper -C $(CARTO_DIR)
-	@make mrproper -C $(COMM_DIR)
-	@make mrproper -C $(HARDW_DIR)
-	@make mrproper -C $(STRAT_DIR)
-	@make mrproper -C $(SIMU_DIR)
