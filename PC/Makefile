@@ -31,9 +31,9 @@ LDFLAGS+=
 ################################################################################
 # Cibles du projet
 
-hardware-lib: $(BUILD_DIR)/lib$(ARCH).a
+_libHardware: $(BUILD_DIR)/libHardware.a
 
-$(BUILD_DIR)/lib$(ARCH).a: $(OBJ_LIB) $(OBJ_S)
+$(BUILD_DIR)/libHardware.a: $(OBJ_LIB) $(OBJ_S)
 
 ##### Compilation des sources
 $(BUILD_DIR)/%.o: %.cpp | $(BUILD_DIR)
@@ -42,10 +42,6 @@ $(BUILD_DIR)/%.o: %.cpp | $(BUILD_DIR)
 
 $(BUILD_DIR):
 	@mkdir $(BUILD_DIR) $ -p
-
-
-run: simulation
-	./simulation
 
 
 simulation: $(OBJ)

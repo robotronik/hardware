@@ -27,9 +27,9 @@ CFLAGS += -I.
 ################################################################################
 # Cibles du projet
 
-hardware-lib: $(BUILD_DIR)/lib$(ARCH).a
+_libHardware: $(BUILD_DIR)/libHardware.a
 
-$(BUILD_DIR)/lib$(ARCH).a: $(OBJ)
+$(BUILD_DIR)/libHardware.a: $(OBJ)
 
 $(BUILD_DIR):
 	@mkdir $(BUILD_DIR) $ -p

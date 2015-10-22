@@ -18,7 +18,7 @@ CFLAGS += -DPIC_BUILD=0 -mthumb -mfloat-abi=soft -mlittle-endian -fno-builtin-pr
 -fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
 #-mthumb-interwork
 LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
-		  -lHAL_Driver -lCMSIS -lBSP -L$(HARDW_LIB_DIR)/lib/
+		  -lHAL_Driver -lCMSIS -lBSP -L$(HARDW_DIR)/lib/
 
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
@@ -30,13 +30,17 @@ CFLAGS +=   $(shell find $(STM32Cube)/Drivers/ -path "*" -printf "-I%h/\n" | sor
 #               Constantes de compilation
 
 # Emplacement des librairies STM32CubeF4
-STM32Cube   = $(abspath $(HARDW_LIB_DIR)/lib/STM32Cube)/
+STM32Cube   = $(abspath $(HARDW_DIR)/lib/STM32Cube)/
 # Emplacement du fichier de config de OpenOCD
-OPENOCD_CFG = $(abspath $(HARDW_LIB_DIR)/lib/openocd/stm32f4discovery.cfg)
+OPENOCD_CFG = $(abspath $(HARDW_DIR)/lib/openocd/stm32f4discovery.cfg)
 
 
 ################################################################################
 # Arch-dependant targets
+
+%.hex:
+	@echo "	HEX	$(PROJECT)|$@"
+	@$(OBJ2HEX) -Oihex $^ $@
 
 ##### Envoi du binaire sur le STM32
 flash: $(HEX)

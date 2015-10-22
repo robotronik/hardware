@@ -30,3 +30,7 @@ ifeq ($(SDL),yes)
 	CFLAGS  += -DUSE_SDL=1 -Wno-deprecated
 	LDFLAGS +=
 endif
+
+# Exécution pour le PC.
+run: all
+	./$(EXEC)

@@ -29,11 +29,9 @@ CFLAGS += -Iheaders/
 ################################################################################
 # Cibles du projet
 
-hardware-lib: $(BUILD_DIR)/lib$(ARCH).a
+_libHardware: $(BUILD_DIR)/libHardware.a
 
-$(BUILD_DIR)/lib$(ARCH).a: $(OBJ) $(OBJ_S)
-
-
+$(BUILD_DIR)/libHardware.a: $(OBJ) $(OBJ_S)
 
 ##### Compilation des sources
 $(BUILD_DIR)/%.o: src/%.c | $(BUILD_DIR)

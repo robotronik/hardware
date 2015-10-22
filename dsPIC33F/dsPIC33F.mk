@@ -37,6 +37,17 @@ else
 	CFLAGS  += -DGROS=1 -DPETIT=0
 endif
 
+
+PIC_ELF = $(EXEC).elf
+PIC_HEX = $(EXEC).hex
+
+# Exécution pour le PIC.
+$(PIC_HEX):$(EXEC)
+	@echo "Converting to Intel HEX Format…"
+	@/opt/xc16-toolchain-bin/bin/xc16-bin2hex $^ -a -omf=elf
+	@echo "Done !"
+
+
 flash:$(PIC_HEX)
 	pk2cmd -P -I -K -M -F$(PIC_HEX) -R -J
 
