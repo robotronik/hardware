@@ -11,7 +11,7 @@ OBJ2HEX = arm-none-eabi-objcopy
 LINKER  = $(STM32Cube)/Projects/STM32F4-Discovery/Templates/TrueSTUDIO/STM32F4-Discovery/STM32F407VG_FLASH.ld
 
 # Précise la carte cible
-TARGET  = 
+TARGET  =
 
 # Options de compilation spécifiques à la plateforme
 CFLAGS += -DPIC_BUILD=0 \
@@ -41,7 +41,9 @@ OPENOCD_CFG = $(abspath $(HARDW_DIR)/lib/openocd/stm32f4discovery.cfg)
 ################################################################################
 # Arch-dependant targets
 
-%.hex:
+HEX = $(BUILD_DIR)/$(EXEC).hex
+
+$(HEX): $(EXEC)
 	@echo "	HEX	$(PROJECT)|$@"
 	@$(OBJ2HEX) -Oihex $^ $@
 

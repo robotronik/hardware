@@ -32,5 +32,5 @@ ifeq ($(SDL),yes)
 endif
 
 # Exécution pour le PC.
-run: all
-	./$(EXEC)
+run: $(BUILD_DIR)/$(EXEC)
+	$^

@@ -38,11 +38,10 @@ else
 endif
 
 
-PIC_ELF = $(EXEC).elf
-PIC_HEX = $(EXEC).hex
+PIC_HEX = $(BUILD_DIR)/$(EXEC).hex
 
 # Exécution pour le PIC.
-$(PIC_HEX):$(EXEC)
+$(PIC_HEX):$(BUILD_DIR)/$(EXEC)
 	@echo "Converting to Intel HEX Format…"
 	@/opt/xc16-toolchain-bin/bin/xc16-bin2hex $^ -a -omf=elf
 	@echo "Done !"
