@@ -14,7 +14,7 @@ export STRAT_DIR = $(PARENT_DIR)/strategie/Robot_$(ROBOT)
 
 
 export CARTO_DIR = $(PARENT_DIR)/cartographie/
-export CARTO_LIB = $(CARTO_DIR)/libCartographie.a
+export CARTO_LIB = $(CARTO_DIR)/libCarto.a
 libCarto:
 	@$(MAKE) -C $(CARTO_DIR) _libCarto
 
