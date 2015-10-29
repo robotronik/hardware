@@ -8,28 +8,25 @@ export BUILD_DIR = build/$(ARCH)/$(DEBUG)
 
 # Les différents projets
 export ASSER_DIR = $(PARENT_DIR)/asservissement/
-
+libAsser:
+	@$(MAKE) -C $(ASSER_DIR) _libAsser
 
 export STRAT_DIR = $(PARENT_DIR)/strategie/Robot_$(ROBOT)
-
+libStrat:
+	@$(MAKE) -C $(STRAT_DIR) _libStrat
 
 export CARTO_DIR = $(PARENT_DIR)/cartographie/
-export CARTO_LIB = $(CARTO_DIR)/libCarto.a
 libCarto:
 	@$(MAKE) -C $(CARTO_DIR) _libCarto
 
-
-export COMM_DIR = $(PARENT_DIR)/common_code/communication/
-export COMM_LIB_ASSER = $(COMM_DIR)/$(BUILD_DIR)/libCommAsser.a
-export COMM_LIB_STRAT = $(COMM_DIR)/$(BUILD_DIR)/libCommStrat.a
+export COMMU_DIR = $(PARENT_DIR)/common_code/communication/
 libCommAsser:
-	@$(MAKE) -C $(COMM_DIR) _libCommAsser
+	@$(MAKE) -C $(COMMU_DIR) _libCommAsser
 libCommStrat:
-	@$(MAKE) -C $(COMM_DIR) _libCommStrat
+	@$(MAKE) -C $(COMMU_DIR) _libCommStrat
 
 
 export HARDW_DIR = $(PARENT_DIR)/hardware/$(ARCH)/
-export HARDW_LIB = $(HARDW_DIR)/$(BUILD_DIR)/libHardware.a
 include $(HARDW_DIR)/$(ARCH).mk
 libHardware:
 	@$(MAKE) -C $(HARDW_DIR) _libHardware
@@ -52,9 +49,11 @@ CFLAGS += -W -Wall $(TARGET) $(INCLUDE) -I$(HARDW_DIR) -I$(HARDW_DIR)/.. \
 	-DDEBUG=$(DEBUG)
 
 # Options pour l'édition de liens
-LDFLAGS+= 	-L$(HARDW_DIR)/$(BUILD_DIR)/	\
+LDFLAGS+= 	-L$(ASSER_DIR)/$(BUILD_DIR)/	\
 			-L$(CARTO_DIR)/$(BUILD_DIR)/	\
-			-L$(COMM_DIR)/$(BUILD_DIR)/
+			-L$(COMMU_DIR)/$(BUILD_DIR)/	\
+			-L$(HARDW_DIR)/$(BUILD_DIR)/	\
+			-L$(STRAT_DIR)/$(BUILD_DIR)/
 
 
 ################################################################################
@@ -84,7 +83,7 @@ clean:
 clean-all:
 	@make clean -C $(ASSER_DIR)
 	@make clean -C $(CARTO_DIR)
-	@make clean -C $(COMM_DIR)
+	@make clean -C $(COMMU_DIR)
 	@make clean -C $(HARDW_DIR)
 	@make clean -C $(STRAT_DIR)
 	@make clean -C $(SIMU_DIR)
