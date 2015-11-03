@@ -65,18 +65,13 @@ void init_UART() {
     if (ret != 0)
         fprintf(stderr, "erreur %d\n", ret);
 }
-/*
-void UART_send_message(char* message) {
-    char *actuel = message;
-    while (*actuel)
-        debug_byte(0,  *actuel++);
-    debug_byte(0,'\0');
-}
-*/
 
-void UART_send_message(char *msg, unsigned int nb_char)
-{
+void __attribute__((weak)) UART_send_message(char *msg, unsigned int nb_char) {
+    // char *actuel = message;
+    // while (*actuel)
+    //     debug_byte(0,  *actuel++);
+    // debug_byte(0,'\0');
+
     (void) nb_char; // pour éviter un warning inutile
     puts(msg);
 }
-
