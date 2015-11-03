@@ -359,7 +359,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 							//HAL_GPIO_TogglePin(GPIOD, LED_BLEUE);
 						    HAL_GPIO_TogglePin(GPIOD, LED_ORANGE);
 
-							adversaire_detecte_callback();
+							//adversaire_detecte_callback();
 							break;
 						case ADVERSAIRE_NON_DETECTE:
 							//HAL_GPIO_TogglePin(GPIOD, LED_VERTE);
@@ -408,7 +408,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 							//HAL_GPIO_TogglePin(GPIOD, LED_BLEUE);
 						    HAL_GPIO_TogglePin(GPIOD, LED_BLEUE);
 
-							adversaire_detecte_callback();
+							//adversaire_detecte_callback();
 							break;
 						case ADVERSAIRE_NON_DETECTE:
 							//HAL_GPIO_TogglePin(GPIOD, LED_VERTE);
