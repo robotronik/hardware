@@ -57,6 +57,11 @@ int UART_getc(unsigned char *c)
     }
 }
 
+void append_to_UART(unsigned char c) {
+    rxBuffer[rxBufferFin] = c;
+    rxBufferFin = (rxBufferFin + 1) % RX_BUFFER_SIZE;
+}
+
 
 void init_UART() {
     pthread_t thread_RX;
