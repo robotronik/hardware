@@ -39,7 +39,7 @@ $(BUILD_DIR)/%.o: src/%.c | $(BUILD_DIR)
 
 ##### Compilation des librairies
 lib:
-	@echo "Todo Lucien !"
+	@$(MAKE) -C libopencm3 lib/stm32/f4
 
 
 $(BUILD_DIR):
