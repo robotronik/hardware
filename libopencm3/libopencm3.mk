@@ -8,20 +8,17 @@ RANLIB  = arm-none-eabi-ranlib
 GDB     = arm-none-eabi-gdb
 LD      = arm-none-eabi-ld
 OBJ2HEX = arm-none-eabi-objcopy
-LINKER  = TODO
+LINKER  = $(HARDW_DIR)/stm32f4-discovery.ld
 
 # Précise la carte cible
 TARGET  =
 
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -DPIC_BUILD=0 \
-	-mthumb -mcpu=cortex-m4 -DSTM32F407xx	\
-	-mfloat-abi=hard -mfpu=fpv4-sp-d16		\
-	-fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
+CFLAGS += -DPIC_BUILD=0 --static \
+	-DSTM32F4 -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
-
-LDFLAGS+= -T$(LINKER) -Wl,--gc-sections -lc -lrdimon \
-		  -lHAL_Driver -lCMSIS -lBSP -L$(HARDW_DIR)/lib/
+LDFLAGS+= -L$(HARDW_DIR)/$(BUILD_DIR) -L$(HARDW_DIR)	\
+		-T$(LINKER) -lopencm3_stm32f4 -lm -lc -lgcc -lnosys -nostartfiles
 
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
@@ -33,7 +30,7 @@ CFLAGS += -I$(HARDW_DIR)/include \
 #               Constantes de compilation
 
 # Emplacement du fichier de config de OpenOCD
-OPENOCD_CFG = $(abspath $(HARDW_DIR)/lib/openocd/stm32f4discovery.cfg)
+OPENOCD_CFG = /usr/share/openocd/scripts/board/stm32f4discovery.cfg
 
 
 ################################################################################

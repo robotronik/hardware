@@ -1,5 +1,5 @@
 PROJECT=libopencm3
-default: lib
+default: hardware-lib
 # Default Options
 export ARCH   = libopencm3
 export ROBOT ?= gros
@@ -38,8 +38,17 @@ $(BUILD_DIR)/%.o: src/%.c | $(BUILD_DIR)
 
 
 ##### Compilation des librairies
-lib:
+lib-stm32f4:
 	@$(MAKE) -C libopencm3 lib/stm32/f4
+	cp libopencm3/lib/libopencm3_stm32f4.a  .
+	cp libopencm3/lib/libopencm3_stm32f4.ld .
+
+lib-stm32f0:
+	@$(MAKE) -C libopencm3 lib/stm32/f0
+	cp libopencm3/lib/libopencm3_stm32f0.a  .
+	cp libopencm3/lib/libopencm3_stm32f0.ld .
+
+hardware-lib: lib-stm32f4 lib-stm32f0 | $(BUILD_DIR)
 
 
 $(BUILD_DIR):
