@@ -23,8 +23,10 @@ LDFLAGS+= -L$(HARDW_DIR)/$(BUILD_DIR) -L$(HARDW_DIR)	\
 #               Includes
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
-CFLAGS += -I$(HARDW_DIR)/include \
-          -O3
+CFLAGS += \
+		-I$(HARDW_DIR)/include \
+		-I$(HARDW_DIR)/libopencm3/include \
+        -O3
 
 ################################################################################
 #               Constantes de compilation
@@ -38,7 +40,7 @@ OPENOCD_CFG = /usr/share/openocd/scripts/board/stm32f4discovery.cfg
 
 HEX = $(BUILD_DIR)/$(EXEC).hex
 
-$(HEX): $(EXEC)
+$(HEX): $(BUILD_DIR)/$(EXEC)
 	@echo "	HEX	$(PROJECT)|$@"
 	@$(OBJ2HEX) -Oihex $^ $@
 
