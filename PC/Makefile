@@ -2,12 +2,12 @@ PROJECT=Simulation
 default: hardware-lib
 # Default Options
 export ARCH   = PC
-export ROBOT ?= gros
-export SDL   ?= yes
 export DEBUG ?= _ALWAYS_
 
+
+
 export PARENT_DIR = ../../
-include $(PARENT_DIR)/hardware/common.mk
+include $(PARENT_DIR)/hardware/common.rules
 
 ################################################################################
 # Fichiers du projet

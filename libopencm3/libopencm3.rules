@@ -14,8 +14,7 @@ LINKER  = $(HARDW_DIR)/stm32f4-discovery.ld
 TARGET  =
 
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -DPIC_BUILD=0 --static \
-	-DSTM32F4 -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
+CFLAGS += --static -DSTM32F4 -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
 LDFLAGS+= -L$(HARDW_DIR)/$(BUILD_DIR) -L$(HARDW_DIR)	\
 		-T$(LINKER) -lopencm3_stm32f4 -lm -lc -lgcc -lnosys -nostartfiles

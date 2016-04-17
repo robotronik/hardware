@@ -2,12 +2,10 @@ PROJECT=stm32f407
 default: lib
 # Default Options
 export ARCH   = stm32f407
-export ROBOT ?= gros
-export SDL   ?= no
 export DEBUG ?= _ALWAYS_
 
 PARENT_DIR = ../../
-include $(PARENT_DIR)/hardware/common.mk
+include $(PARENT_DIR)/hardware/common.rules
 
 ################################################################################
 # Fichiers du projet

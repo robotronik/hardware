@@ -22,7 +22,7 @@ LINKER  =
 TARGET  =
 
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -DPIC_BUILD=0 -Os -g
+CFLAGS += -Os -g
 
 LDFLAGS+= -Wl,--gc-sections -lm
 

@@ -2,13 +2,11 @@ PROJECT=dsPIC33F
 default: hardware-lib
 # Default Options
 export ARCH   = dsPIC33F
-export ROBOT ?= gros
-export SDL   ?= no
 export DEBUG ?= _ALWAYS_
 
 PARENT_DIR = ../../
 
-include $(PARENT_DIR)/hardware/common.mk
+include $(PARENT_DIR)/hardware/common.rules
 
 ################################################################################
 # Fichiers du projet

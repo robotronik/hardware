@@ -14,8 +14,7 @@ LINKER  = $(STM32Cube)/Projects/STM32F4-Discovery/Templates/TrueSTUDIO/STM32F4-D
 TARGET  =
 
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -DPIC_BUILD=0 \
-	-mthumb -mcpu=cortex-m4 -DSTM32F407xx	\
+CFLAGS += -mthumb -mcpu=cortex-m4 -DSTM32F407xx	\
 	-mfloat-abi=hard -mfpu=fpv4-sp-d16		\
 	-fno-builtin-sscanf -fdata-sections -Wl,--gc-sections
 

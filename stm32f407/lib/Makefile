@@ -7,7 +7,7 @@ export SDL   = no
 export DEBUG = _WARNING_
 
 export PARENT_DIR = ../../../
-include $(PARENT_DIR)/hardware/common.mk
+include $(PARENT_DIR)/hardware/common.rules
 
 ################################################################################
 # Chemin du dépôt stm32f407
