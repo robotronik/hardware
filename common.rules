@@ -20,10 +20,8 @@ libCarto:
 	@$(MAKE) -C $(CARTO_DIR) _libCarto
 
 export COMMU_DIR = $(PARENT_DIR)/common_code/communication/
-libCommAsser:
-	@$(MAKE) -C $(COMMU_DIR) _libCommAsser
-libCommStrat:
-	@$(MAKE) -C $(COMMU_DIR) _libCommStrat
+libComm:
+	@$(MAKE) -C $(COMMU_DIR) _libComm
 
 
 export HARDW_DIR = $(PARENT_DIR)/hardware/$(ARCH)/
@@ -54,7 +52,7 @@ LDFLAGS+= 	-L$(ASSER_DIR)/$(BUILD_DIR)/	\
 # Compile an object file
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	@echo "	CC	$(PROJECT)|$(ARCH)|$(notdir $@)"
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 # Compile a static library
 $(BUILD_DIR)/%.a:
