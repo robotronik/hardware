@@ -69,9 +69,11 @@ void init_UART() {
     int ret = pthread_create(&thread_RX, NULL, fake_RX, NULL);
     if (ret != 0)
         fprintf(stderr, "erreur %d\n", ret);
+
+//    setvbuf(stdout , NULL , _IOFBF , 1 );
 }
 
-void __attribute__((weak)) UART_send_message(char *msg, unsigned int nb_char) {
+void UART_send_message(char *msg, unsigned int nb_char) {
     // char *actuel = message;
     // while (*actuel)
     //     debug_byte(0,  *actuel++);
@@ -79,4 +81,5 @@ void __attribute__((weak)) UART_send_message(char *msg, unsigned int nb_char) {
 
     (void) nb_char; // pour éviter un warning inutile
     puts(msg);
+    fflush(stdout);
 }
