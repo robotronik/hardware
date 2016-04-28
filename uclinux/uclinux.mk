@@ -18,9 +18,6 @@ LD      = $(CROSS_COMPILE)ld
 OBJ2HEX =
 LINKER  =
 
-# Précise la carte cible
-TARGET  =
-
 # Options de compilation spécifiques à la plateforme
 CFLAGS += -Os -g
 

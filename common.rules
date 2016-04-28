@@ -35,8 +35,8 @@ export SIMU_DIR  = $(PARENT_DIR)/simulation/
 
 ################################################################################
 # Options de compilations
-CFLAGS += -W -Wall $(TARGET) $(INCLUDE) -I$(HARDW_DIR) -I$(HARDW_DIR)/.. \
-	-DDEBUG=$(DEBUG)
+CFLAGS += -W -Wall -DDEBUG=$(DEBUG) \
+	-I$(PARENT_DIR)/hardware/include
 
 # Options pour l'édition de liens
 LDFLAGS+= 	-L$(ASSER_DIR)/$(BUILD_DIR)/	\

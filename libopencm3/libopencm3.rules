@@ -10,9 +10,6 @@ LD      = arm-none-eabi-ld
 OBJ2HEX = arm-none-eabi-objcopy
 LINKER  = $(HARDW_DIR)/stm32f4-discovery.ld
 
-# Précise la carte cible
-TARGET  =
-
 # Options de compilation spécifiques à la plateforme
 CFLAGS += --static -DSTM32F4 -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
@@ -23,7 +20,7 @@ LDFLAGS+= -L$(HARDW_DIR)/$(BUILD_DIR) -L$(HARDW_DIR)	\
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
 CFLAGS += \
-		-I$(HARDW_DIR)/include \
+		-I$(HARDW_DIR)/inc \
 		-I$(HARDW_DIR)/libopencm3/include \
         -O3
 

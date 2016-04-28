@@ -10,11 +10,8 @@ LD      = /opt/microchip/xc16/v1.24/bin/xc16-ld
 OBJ2HEX = /opt/microchip/xc16/v1.24/bin/xc16-bin2hex
 LINKER  =
 
-# Précise la carte cible
-TARGET  = -mcpu=33FJ128MC802
-
 # Options de compilation spécifiques à la plateforme
-CFLAGS += -O0 -g -omf=elf -msmart-io=1
+CFLAGS += -O0 -g -omf=elf -msmart-io=1 -mcpu=33FJ128MC802
 #-mthumb-interwork
 LDFLAGS+= -Wl,--script=p33FJ128MC802.gld,--stack=16,--check-sections,--data-init,--pack-data,\
 --handles,--isr,--no-gc-sections,--fill-upper=0,--stackguard=16,--no-force-link,--smart-io,--report-mem

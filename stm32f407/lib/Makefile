@@ -17,7 +17,7 @@ PathSTM32 = ../
 # Indique au compilateur dans quels répertoires chercher les headers appelés
 # avec la directive de préprocesseur "#include <header.h>"
 # Répertoires pour les headers requis (core_cm4.h, stm32f4xx.h, stm32f4xx_hal_conf.h, ...)
-INCLUDE = -I$(STM32Cube)Drivers/CMSIS/Device/ST/STM32F4xx/Include/ \
+CFLAGS += -I$(STM32Cube)Drivers/CMSIS/Device/ST/STM32F4xx/Include/ \
           -I$(STM32Cube)Drivers/CMSIS/Include/                     \
           -I$(STM32Cube)Projects/STM32F4-Discovery/Templates/Inc/  \
           $(shell find $(STM32Cube)Drivers/ -path "*" -printf "-I%h/\n"|sort -u)
