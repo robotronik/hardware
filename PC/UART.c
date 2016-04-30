@@ -73,7 +73,7 @@ void init_UART() {
 //    setvbuf(stdout , NULL , _IOFBF , 1 );
 }
 
-void UART_send_message(char *msg, unsigned int nb_char) {
+void __attribute__((weak)) UART_send_message(char *msg, unsigned int nb_char) {
     // char *actuel = message;
     // while (*actuel)
     //     debug_byte(0,  *actuel++);
