@@ -12,7 +12,5 @@ void clock_setup(void) {
     rcc_periph_clock_enable(RCC_GPIOD);
     rcc_periph_clock_enable(RCC_GPIOE);
 
-    // Enable clocks for USART2.
-    rcc_periph_clock_enable(RCC_USART2);
 }
 
