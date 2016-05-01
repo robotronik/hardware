@@ -8,6 +8,7 @@ void led_verte_off();
 
 void set_all_led();
 void clear_all_led();
+void toggle_all_led();
 
 void test_led();
 

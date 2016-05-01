@@ -30,6 +30,12 @@ void clear_all_led() {
                     | GPIO14
                     | GPIO15 );
 }
+void toggle_all_led() {
+    gpio_toggle(GPIOD, GPIO12
+                    | GPIO13
+                    | GPIO14
+                    | GPIO15 );
+}
 
 
 #define LED_DELAY 100
