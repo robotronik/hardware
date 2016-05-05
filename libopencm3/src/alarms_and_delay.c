@@ -30,14 +30,18 @@ void delay_ms(int delay) {
 typedef struct {
     uint32_t time_millis;
     void (*callback) (void);
+    bool repeat;
+    uint32_t repeat_tempo;
 } alarm;
 
 alarm alarms[MAX_ALARMS];
 int alarm_count = 0;
 
-void add_alarm(int time_millis, void (*callback) (void)) {
-    alarms[alarm_count].time_millis = time_millis;
+void add_alarm(int time_millis, void (*callback) (void), bool repeat) {
+    alarms[alarm_count].time_millis = system_millis + time_millis;
     alarms[alarm_count].callback = callback;
+    alarms[alarm_count].repeat = repeat;
+    alarms[alarm_count].repeat_tempo = time_millis;
 
     alarm_count ++;
 }
@@ -50,6 +54,9 @@ void sys_tick_handler(void) {
     for (int i = 0; i < alarm_count; ++i) {
         if (alarms[i].time_millis == system_millis
         &&  alarms[i].callback) {
+            if (alarms[i].repeat) {
+                alarms[i].time_millis += alarms[i].repeat_tempo;
+            }
             alarms[i].callback();
         }
     }
